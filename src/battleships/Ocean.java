@@ -23,7 +23,7 @@ public class Ocean {
 	 * 
 	 */
 	public Ocean() {
-		// TODO implement constructor
+		// TODO implement constructor method
 	}
 
 	/**
