@@ -23,7 +23,7 @@ public class Ocean {
 	 * 
 	 */
 	public Ocean() {
-		// TODO implement constructor method
+		// TODO implement constructor method, needs EmptySea class.
 	}
 
 	/**
@@ -66,6 +66,21 @@ public class Ocean {
 	 */
 	private void increaseShotsFired() {
 		this.shotsFired++;
+	}
+	
+	/**
+	 * return ship array TEST only!
+	 */
+	public Ship[][] getShipArray() {
+		return this.ships;
+	}
+	
+	/**
+	 * return ship array TEST only!
+	 * @return 
+	 */
+	public void print() {
+		//TODO loop to print some ocean
 	}
 	
 	
