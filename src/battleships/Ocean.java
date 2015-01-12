@@ -70,20 +70,27 @@ public class Ocean {
 	
 	/**
 	 * return ship array TEST only!
+	 * @return Ships array
 	 */
 	public Ship[][] getShipArray() {
 		return this.ships;
 	}
 	
 	/**
-	 * return ship array TEST only!
-	 * @return 
+	 * print ocean
 	 */
 	public void print() {
 		//TODO loop to print some ocean
 	}
 	
-	
+	/**
+	 * check if game is over
+	 * @return TRUE if the game is over
+	 */
+	public boolean isGameOver() {
+		//TODO check if all ships are sunk.
+		return true;
+	}
 	
 	
 

@@ -8,18 +8,18 @@ package battleships;
  *
  */
 public class Ship {
-	private int bowRow;
-	private int bowColumn;
-	private boolean horizontal;
-	private int length;
-	private boolean[] hit = new boolean[4];
+	protected int bowRow;
+	protected int bowColumn;
+	protected boolean horizontal;
+	protected int length;
+	protected boolean[] hit = new boolean[4];
 	
 	
 	/**
 	 * 
 	 */
 	public Ship() {
-		// TODO Auto-generated constructor stub
+		this.length = 1;
 	}
 
 
@@ -70,6 +70,10 @@ public class Ship {
 		this.horizontal = horizontal;
 	}
 
+	/**
+	 * Returns the ship type
+	 * @return Ship type
+	 */
 	public String getShipType(){
 		return "";
 	}
@@ -90,6 +94,18 @@ public class Ship {
 	
 	public boolean shootAt(int row, int column){
 		//TODO check if the ship is in the position of row/column.
+		for(int i=0; i <= this.getLength()-1; i++){
+			if(this.isHorizontal()){
+				//check row
+				if(this.getBowRow()+i==row && this.getBowColumn() == column){
+					
+				}	
+			} else {
+				//check column values
+			}
+			
+		}
+
 		
 		//TODO set hit array to true if it is hit
 		
