@@ -36,10 +36,10 @@ public class Battleship extends Ship {
 		// "x" ship is sunk
 		// "." not fired at
 		
-		
-		
 		return ".";
-	}	
+	}
+	
+	
 	
 
 }

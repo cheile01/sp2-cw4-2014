@@ -87,29 +87,32 @@ public class Ship {
 		return true;
 	}
 	
-	public void placeShipAt(int row, int column, boolean hotizontal, Ocean ocean){
+	public void placeShipAt(int row, int column, boolean horizontal, Ocean ocean){
 		//TODO create method to place ship - needs ocean array first.
+		this.setBowColumn(column);
+		this.setBowRow(row);
+		this.setHorizontal(horizontal);
+		//TODO add to ocean array
+		
 		
 	}
 	
 	public boolean shootAt(int row, int column){
-		//TODO check if the ship is in the position of row/column.
 		for(int i=0; i <= this.getLength()-1; i++){
 			if(this.isHorizontal()){
-				//check row
+				//check row values
 				if(this.getBowRow()+i==row && this.getBowColumn() == column){
-					
+					this.hit[i] = true;
+					return true;
 				}	
 			} else {
 				//check column values
-			}
-			
-		}
-
-		
-		//TODO set hit array to true if it is hit
-		
-		//TODO return TRUE if hit
+				if(this.getBowRow()==row && this.getBowColumn()+i == column){
+					this.hit[i] = true;
+					return true;
+				}
+			}//END else isHorizontal
+		}//END For loop
 		return false;
 	}
 	

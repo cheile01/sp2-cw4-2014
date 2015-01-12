@@ -4,14 +4,11 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import battleships.Ocean;
 import battleships.Ship;
 
 public class ShipAbstractTest {
 
-	@Test
-	public void testShip() {
-		fail("Not yet implemented");
-	}
 
 	@Test
 	public void testGetBowRow() {
@@ -52,17 +49,38 @@ public class ShipAbstractTest {
 
 	@Test
 	public void testOkToPlaceShipAt() {
-		fail("Not yet implemented");
+		
+		
+		
+		
 	}
 
 	@Test
 	public void testPlaceShipAt() {
-		fail("Not yet implemented");
+		Ocean water = new Ocean();
+		Ship tanker = new Ship();
+		tanker.placeShipAt(2, 4, true, water);
+
+		assertEquals("Ship placed in incorrect row",2,tanker.getBowRow());
+		assertEquals("Ship placed in incorrect column",4,tanker.getBowColumn());
+		assertEquals("Ship not horizontal",true,tanker.isHorizontal());
 	}
 
 	@Test
 	public void testShootAt() {
-		fail("Not yet implemented");
+		Ocean water = new Ocean();
+		Ship tanker = new Ship();
+		tanker.placeShipAt(2, 4, true, water);
+
+		assertEquals("Ship placed in incorrect row",2,tanker.getBowRow());
+		assertEquals("Ship placed in incorrect column",4,tanker.getBowColumn());
+		assertEquals("Ship not horizontal",true,tanker.isHorizontal());
+		
+		assertEquals("Shot at bow",true,tanker.shootAt(2, 4));
+		assertEquals("Should have missed",false,tanker.shootAt(4, 2));
+		
+		
+		
 	}
 
 	@Test
