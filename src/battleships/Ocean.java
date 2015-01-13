@@ -12,6 +12,8 @@ public class Ocean {
 	private int shotsFired;
 	private int hitCount;
 	private int shipsSunk;
+	private Battleship[] battleship = new Battleship[0]; //1 Battleship
+	private EmptySea[] emptySea = new EmptySea[99]; //100 EmptySea
 	
 	{
 		shotsFired=0;
@@ -23,7 +25,14 @@ public class Ocean {
 	 * 
 	 */
 	public Ocean() {
-		// TODO implement constructor method, needs EmptySea class.
+		int counter = 0;
+		for(int r=0; r<=9;r++){
+			for(int c=0; c<=9; c++){
+				ships[r][c] = emptySea[counter];
+				counter++;
+			}
+		}
+		
 	}
 
 	/**
@@ -89,8 +98,17 @@ public class Ocean {
 	 */
 	public boolean isGameOver() {
 		//TODO check if all ships are sunk.
-		return true;
+		return false;
 	}
+	
+	/**
+	 * check if game is over
+	 * @return TRUE if the field is occupied by anything but EmptySea
+	 */
+	public boolean isOccupied() {
+		//TODO check field is emptySea.
+		return false;
+	}	
 	
 	
 

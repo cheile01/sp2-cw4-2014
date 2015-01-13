@@ -82,16 +82,29 @@ public class Ship {
 		return this.length;
 	}
 	
-	public boolean okToPlaceShipAt(int row, int column, boolean hotizontal, Ocean ocean){
+	public boolean okToPlaceShipAt(int row, int column, boolean horizontal, Ocean ocean){
 		//TODO check if it is ok to place ship - needs ocean array first.
+		
+		for(int i=0; i <= this.getLength()-1; i++){
+			if(this.isHorizontal()){
+				
+					
+			} else {
+				
+				
+			}//END else isHorizontal
+		}//END For loop
+		
 		return true;
 	}
 	
 	public void placeShipAt(int row, int column, boolean horizontal, Ocean ocean){
-		//TODO create method to place ship - needs ocean array first.
-		this.setBowColumn(column);
-		this.setBowRow(row);
-		this.setHorizontal(horizontal);
+		if(this.okToPlaceShipAt(row, column, horizontal, ocean)){
+			this.setBowColumn(column);
+			this.setBowRow(row);
+			this.setHorizontal(horizontal);
+		}
+		
 		//TODO add to ocean array
 		
 		
