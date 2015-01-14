@@ -126,43 +126,28 @@ public class Ship {
 	 * @return true, if successful
 	 */
 	public boolean okToPlaceShipAt(int row, int column, boolean horizontal, Ocean ocean){
-		//get maximum values to check and check if ship is standing over.
+		//set minimum values to bow coordinates.
+		int minRow = row;
+		int minColumn = column;
+		
+		//set maximum coordinates to stern coordinates
 		int maxRow;
 		int maxColumn;
 		if(horizontal){
-			if(column == 10-this.getLength()){
-				//the ship would end at column 9 and should not check for padding
-				maxRow = row + 1;
-				maxColumn = column + this.getLength() - 1;
-			} else if (column < 10-this.getLength()){
-				//the ship ends before column 9 and needs to check for padding at the end.
-				maxRow = row + 1;
-				maxColumn = column + this.getLength(); 
-			} else {
-				//the ship would stand over the edge, do not allow to place
-				return false;
-			}
+			maxRow = row;
+			maxColumn = column + this.getLength() - 1;
 		} else {
-			if(row == 10-this.getLength()){
-				//the ship would end at row 9 and should not check for padding
-				maxRow = row + this.getLength() - 1;
-				maxColumn = column + 1; 
-			} else if (row < 10-this.getLength()){
-				//the ship ends before row 9 and needs to check for padding at the end.
-				maxRow = row + this.getLength();
-				maxColumn = column +  1;
-			} else {
-				//the ship would stand over the edge, do not allow to place
-				return false;
-			}
+			maxColumn = column;
+			maxRow = row + this.getLength() - 1;
 		}
 		
-		//get minimum values (check if minimum values are 0 or greater)
-		int minRow = row;
-		int minColumn = column;
-		if(row > 0){ minRow--; }
-		if(column > 0){ minColumn--; }
+		//if maxRow OR maxColumn are larger than 9, the ship would stand over
+		if(maxRow > 9 || maxColumn > 9) { return false; }
 		
+		//if not in maxRow or maxColumn 9, there needs to be bottom and right space tested:
+		if(maxRow < 9){ maxRow++; }
+		if(maxColumn < 9){ maxColumn++; }
+
 		//TODO: remove: 
 		System.out.println("For "+row+","+column+" Min: "+minRow+","+minColumn+" Max: "+maxRow+","+maxColumn);
 		

@@ -84,10 +84,19 @@ public class BattleshipTest {
 		
 		//Testing standing over
 		assertEquals("Place 4,8 horizontal",false,tanker.okToPlaceShipAt(4, 8, true, water));
+		assertEquals("Place 7,2 vertical",false,tanker.okToPlaceShipAt(7, 2, false, water));
 		
-		//Testing top right edge:
+		//Testing top right corner:
 		assertEquals("Place 0,6 horizontal",true,tanker.okToPlaceShipAt(0, 6, true, water));
 		assertEquals("Place 0,9 vertical",true,tanker.okToPlaceShipAt(0, 9, false, water));
+		
+		//Testing bottom left corner:
+		assertEquals("Place 9,0 horizontal",true,tanker.okToPlaceShipAt(9, 0, true, water));
+		assertEquals("Place 6,0 vertical",true,tanker.okToPlaceShipAt(6, 0, false, water));
+		
+		//Testing bottom right corner:
+		assertEquals("Place 9,6 horizontal",true,tanker.okToPlaceShipAt(9, 6, true, water));
+		assertEquals("Place 6,9 vertical",true,tanker.okToPlaceShipAt(6, 9, false, water));
 		
 	}
 	
