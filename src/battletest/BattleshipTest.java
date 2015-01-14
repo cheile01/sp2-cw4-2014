@@ -70,5 +70,26 @@ public class BattleshipTest {
 		
 	}
 	
+	@Test
+	public void okToPlaceShipInEmptyOcean(){
+		Ocean water = new Ocean();
+		Ship tanker = new Battleship();
+		
+		//Testing top corner
+		assertEquals("Place 0,0 horizontal",true,tanker.okToPlaceShipAt(0, 0, true, water));
+		assertEquals("Place 0,0 vertical",true,tanker.okToPlaceShipAt(0, 0, false, water));
+		
+		//Testing top edge
+		assertEquals("Place 0,1 horizontal",true,tanker.okToPlaceShipAt(0, 1, true, water));
+		
+		//Testing standing over
+		assertEquals("Place 4,8 horizontal",false,tanker.okToPlaceShipAt(4, 8, true, water));
+		
+		//Testing top right edge:
+		assertEquals("Place 0,6 horizontal",true,tanker.okToPlaceShipAt(0, 6, true, water));
+		assertEquals("Place 0,9 vertical",true,tanker.okToPlaceShipAt(0, 9, false, water));
+		
+	}
+	
 
 }

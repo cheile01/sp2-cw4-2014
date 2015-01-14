@@ -13,7 +13,7 @@ public class Ocean {
 	private int hitCount;
 	private int shipsSunk;
 	private Battleship[] battleship = new Battleship[0]; //1 Battleship
-	private EmptySea[] emptySea = new EmptySea[99]; //100 EmptySea
+	//private EmptySea[] emptySea = new EmptySea[99]; //100 EmptySea
 	
 	{
 		shotsFired=0;
@@ -25,14 +25,14 @@ public class Ocean {
 	 * 
 	 */
 	public Ocean() {
+		//fill Ocean with emtptySea Objects
 		int counter = 0;
 		for(int r=0; r<=9;r++){
 			for(int c=0; c<=9; c++){
-				ships[r][c] = emptySea[counter];
+				ships[r][c] = new EmptySea();
 				counter++;
-			}
-		}
-		
+			}//END for c
+		}//END for r
 	}
 
 	/**
@@ -105,9 +105,8 @@ public class Ocean {
 	 * check if game is over
 	 * @return TRUE if the field is occupied by anything but EmptySea
 	 */
-	public boolean isOccupied() {
-		//TODO check field is emptySea.
-		return false;
+	public boolean isOccupied(int row, int column) {
+		return this.ships[row][column].isShip();
 	}	
 	
 	

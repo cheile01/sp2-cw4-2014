@@ -61,7 +61,16 @@ public class EmptySea extends Ship {
 		return super.equals(obj);
 	}
 	
-	
+	/**
+	 * Checks if is ship.
+	 * This will always return false as EmptySea is not a real ship
+	 *
+	 * @return true for ship, false for Empty Sea. 
+	 */
+	@Override
+	public boolean isShip(){
+		return false;
+	}
 	
 	
 	

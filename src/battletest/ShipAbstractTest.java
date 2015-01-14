@@ -44,7 +44,7 @@ public class ShipAbstractTest {
 	@Test
 	public void testGetLength() {
 		Ship tanker = new Ship();
-		assertEquals("Ship Length incorrect",0,tanker.getLength());
+		assertEquals("Ship Length incorrect",1,tanker.getLength());
 	}
 
 	@Test

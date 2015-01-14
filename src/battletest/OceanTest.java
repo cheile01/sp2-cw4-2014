@@ -4,11 +4,14 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import battleships.Ocean;
+
 public class OceanTest {
 
 	@Test
 	public void testOcean() {
-		fail("Not yet implemented");
+		Ocean water = new Ocean();
+		
 	}
 
 	@Test
@@ -26,14 +29,6 @@ public class OceanTest {
 		fail("Not yet implemented");
 	}
 
-	@Test
-	public void testGetShipArray() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testPrint() {
-		fail("Not yet implemented");
-	}
+	
 
 }
