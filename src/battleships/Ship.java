@@ -147,6 +147,10 @@ public class Ship {
 		//if not in maxRow or maxColumn 9, there needs to be bottom and right space tested:
 		if(maxRow < 9){ maxRow++; }
 		if(maxColumn < 9){ maxColumn++; }
+		//if not in minRow or minColumn 0, there needs to be top and left space tested:
+		if(minRow > 0){ minRow--; }
+		if(minColumn > 0){ minColumn--; }
+		
 
 		//TODO: remove: 
 		System.out.println("For "+row+","+column+" Min: "+minRow+","+minColumn+" Max: "+maxRow+","+maxColumn);
