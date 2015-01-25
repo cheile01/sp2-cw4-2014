@@ -100,5 +100,27 @@ public class BattleshipTest {
 		
 	}
 	
+	
+	@Test
+	public void okToPlaceShipInFullOcean(){
+		Ocean water = new Ocean();
+		Ship block = new Battleship();
+		Ship tanker = new Battleship();
+		
+		//place blocking ship
+		block.placeShipAt(1, 6, false, water);
+		
+		//Testing horizontals
+		assertEquals("Place 0,1 horizontal",true,tanker.okToPlaceShipAt(0, 1, true, water));
+		assertEquals("Place 0,6 horizontal",false,tanker.okToPlaceShipAt(0, 6, true, water));
+		assertEquals("Place 2,1 horizontal",true,tanker.okToPlaceShipAt(2, 1, true, water));
+		assertEquals("Place 2,6 horizontal",false,tanker.okToPlaceShipAt(2, 6, true, water));
+		assertEquals("Place 4,4 horizontal",false,tanker.okToPlaceShipAt(4, 4, true, water));
+		assertEquals("Place 5,2 horizontal",false,tanker.okToPlaceShipAt(5, 2, true, water));
+		assertEquals("Place 6,4 horizontal",true,tanker.okToPlaceShipAt(6, 4, true, water));
+		
+		
+	}
+	
 
 }

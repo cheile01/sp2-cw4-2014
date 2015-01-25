@@ -157,11 +157,11 @@ public class Ship {
 		
 		//loop through Ocean
 		for(int r = minRow;r<=maxRow;r++){
-			for(int c = minColumn;c<=maxColumn;c++){
+			for(int c = minColumn;c<=maxColumn;c++){	
 				if(ocean.isOccupied(r, c)){
 					//as soon as the first occupied space is found, stop looping and return false
 					return false;
-				}
+				} 
 			}
 		}//END loop through Ocean
 		
@@ -179,13 +179,13 @@ public class Ship {
 	 */
 	public void placeShipAt(int row, int column, boolean horizontal, Ocean ocean){
 
-			this.setBowColumn(column);
-			this.setBowRow(row);
-			this.setHorizontal(horizontal);
-
+		this.setBowColumn(column);
+		this.setBowRow(row);
+		this.setHorizontal(horizontal);
 		
-		//TODO add to ocean array
+		//add to ocean array
 		
+		ocean.addShip(this);
 		
 	}
 	

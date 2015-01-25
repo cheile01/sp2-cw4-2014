@@ -103,12 +103,36 @@ public class Ocean {
 	
 	/**
 	 * check if game is over
+	 * @param row ocean row
+	 * @param column ocean column
 	 * @return TRUE if the field is occupied by anything but EmptySea
 	 */
 	public boolean isOccupied(int row, int column) {
 		return this.ships[row][column].isShip();
 	}	
 	
+	/**
+	 * add a ship to the ocean
+	 * @param ship - the ship to place
+	 * @return TRUE if the field is occupied by anything but EmptySea
+	 */
+	public void addShip(Ship s){
+		//add ship to ocean array
+		int row = s.getBowRow();
+		int column = s.getBowColumn();
+		int length = s.getLength();
+		
+		for(int i = 0; i < length; i++){
+			if(s.isHorizontal()){
+				this.ships[row][column+i] = s;
+			} else {
+				this.ships[row+i][column] = s;
+			}
+		}
+		
+		
+		
+	}
 	
 
 }

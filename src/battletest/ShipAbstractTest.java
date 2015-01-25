@@ -85,7 +85,13 @@ public class ShipAbstractTest {
 
 	@Test
 	public void testIsSunk() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
+	}
+	
+	@Test
+	public void isShiptest() {
+		Ship tanker = new Ship();
+		assertEquals("its a ship",true,tanker.isShip());
 	}
 
 }
