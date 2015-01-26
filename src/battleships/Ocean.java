@@ -142,65 +142,39 @@ public class Ocean {
 	
 	
 	public void placeAllShipsRandomly(){
-		boolean repeat = true;
 		int row = 0;
 		int column = 0;
 		boolean horizontal;
 		Random rand = new Random();
 		for(int b = 0; b < this.battleships; b++){
-			Battleship battleship = new Battleship();
-			do{
-				row = rand.nextInt(9);
-				column = rand.nextInt(9);
-				horizontal = rand.nextBoolean();
-				if(battleship.okToPlaceShipAt(row, column, horizontal, this)){
-					battleship.placeShipAt(row, column, horizontal, this);
-					repeat = false;
-				}
-			}while(repeat);
-			repeat = true;
+			placeShipRandomly(new Battleship());
 		}
 		for(int c = 0; c < this.cruisers; c++){
-			Cruiser cruiser = new Cruiser();
-			do{
-				row = rand.nextInt(9);
-				column = rand.nextInt(9);
-				horizontal = rand.nextBoolean();
-				if(cruiser.okToPlaceShipAt(row, column, horizontal, this)){
-					cruiser.placeShipAt(row, column, horizontal, this);
-					repeat = false;
-				}
-			}while(repeat);
-			repeat=true;
+			placeShipRandomly(new Cruiser());
 		}
 		for(int d = 0; d < this.destroyers; d++){
-			Destroyer destroyer = new Destroyer();
-			do{
-				row = rand.nextInt(9);
-				column = rand.nextInt(9);
-				horizontal = rand.nextBoolean();
-				if(destroyer.okToPlaceShipAt(row, column, horizontal, this)){
-					destroyer.placeShipAt(row, column, horizontal, this);
-					repeat = false;
-				}
-			}while(repeat);
-			repeat=true;
+			placeShipRandomly(new Destroyer());
 		}
 		for(int s = 0; s < this.submarines; s++){
-			Submarine submarine = new Submarine();
-			do{
-				row = rand.nextInt(9);
-				column = rand.nextInt(9);
-				horizontal = rand.nextBoolean();
-				if(submarine.okToPlaceShipAt(row, column, horizontal, this)){
-					submarine.placeShipAt(row, column, horizontal, this);
-					repeat = false;
-				}
-			}while(repeat);
-			repeat=true;
+			placeShipRandomly(new Submarine());
 		}
 	}
 	
+	private void placeShipRandomly(Ship ship){
+		int row = 0;
+		int column = 0;
+		boolean horizontal;
+		Random rand = new Random();
+		do{
+			row = rand.nextInt(9);
+			column = rand.nextInt(9);
+			horizontal = rand.nextBoolean();
+			if(ship.okToPlaceShipAt(row, column, horizontal, this)){
+				ship.placeShipAt(row, column, horizontal, this);
+				break;
+			}
+		}while(true);
+	}
 	
 
 }
