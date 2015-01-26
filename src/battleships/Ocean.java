@@ -3,6 +3,8 @@
  */
 package battleships;
 
+import java.util.Random;
+
 /**
  * @author christianheiler
  *
@@ -34,11 +36,9 @@ public class Ocean {
 	 */
 	public Ocean() {
 		//fill Ocean with emtptySea Objects
-		int counter = 0;
 		for(int r=0; r<=9;r++){
 			for(int c=0; c<=9; c++){
 				ships[r][c] = new EmptySea();
-				counter++;
 			}//END for c
 		}//END for r
 	}
@@ -139,6 +139,68 @@ public class Ocean {
 		}
 		
 	}
+	
+	
+	public void placeAllShipsRandomly(){
+		boolean repeat = true;
+		int row = 0;
+		int column = 0;
+		boolean horizontal;
+		Random rand = new Random();
+		for(int b = 0; b < this.battleships; b++){
+			Battleship battleship = new Battleship();
+			do{
+				row = rand.nextInt(9);
+				column = rand.nextInt(9);
+				horizontal = rand.nextBoolean();
+				if(battleship.okToPlaceShipAt(row, column, horizontal, this)){
+					battleship.placeShipAt(row, column, horizontal, this);
+					repeat = false;
+				}
+			}while(repeat);
+			repeat = true;
+		}
+		for(int c = 0; c < this.cruisers; c++){
+			Cruiser cruiser = new Cruiser();
+			do{
+				row = rand.nextInt(9);
+				column = rand.nextInt(9);
+				horizontal = rand.nextBoolean();
+				if(cruiser.okToPlaceShipAt(row, column, horizontal, this)){
+					cruiser.placeShipAt(row, column, horizontal, this);
+					repeat = false;
+				}
+			}while(repeat);
+			repeat=true;
+		}
+		for(int d = 0; d < this.destroyers; d++){
+			Destroyer destroyer = new Destroyer();
+			do{
+				row = rand.nextInt(9);
+				column = rand.nextInt(9);
+				horizontal = rand.nextBoolean();
+				if(destroyer.okToPlaceShipAt(row, column, horizontal, this)){
+					destroyer.placeShipAt(row, column, horizontal, this);
+					repeat = false;
+				}
+			}while(repeat);
+			repeat=true;
+		}
+		for(int s = 0; s < this.submarines; s++){
+			Submarine submarine = new Submarine();
+			do{
+				row = rand.nextInt(9);
+				column = rand.nextInt(9);
+				horizontal = rand.nextBoolean();
+				if(submarine.okToPlaceShipAt(row, column, horizontal, this)){
+					submarine.placeShipAt(row, column, horizontal, this);
+					repeat = false;
+				}
+			}while(repeat);
+			repeat=true;
+		}
+	}
+	
 	
 
 }

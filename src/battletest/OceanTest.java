@@ -85,10 +85,28 @@ public class OceanTest {
 		
 		for(int r = 0; r < 10; r++){
 			for(int c = 0; c < 10; c++){
-				System.out.print(Ships[r][c].toString());
+				System.out.print(Ships[r][c].getShipType().charAt(0));
 			}
 			System.out.println();
 		}
+	}
+	
+	@Test
+	public void placeRandomTest1() {
+		Ocean water = new Ocean();
+
+		water.placeAllShipsRandomly();
+
+		Ship Ships[][] = water.getShipArray();
+		
+		for(int r = 0; r < 10; r++){
+			for(int c = 0; c < 10; c++){
+				System.out.print(Ships[r][c].getShipType().charAt(0));
+			}
+			System.out.println();
+		}
+		System.out.println();
+		
 	}
 
 }
