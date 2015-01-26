@@ -31,11 +31,11 @@ public class BattleshipTest {
 	public void testShootAt() {
 		Ocean water = new Ocean();
 		Ship tanker = new Battleship();
-		tanker.placeShipAt(2, 4, true, water);
+		tanker.placeShipAt(2, 4, false, water);
 
 		assertEquals("Ship placed in incorrect row",2,tanker.getBowRow());
 		assertEquals("Ship placed in incorrect column",4,tanker.getBowColumn());
-		assertEquals("Ship not horizontal",true,tanker.isHorizontal());
+		assertEquals("Ship not horizontal",false,tanker.isHorizontal());
 		assertEquals("Ship too short!",4,tanker.getLength());
 		
 		assertEquals("Shot at bow",true,tanker.shootAt(2, 4));
@@ -52,11 +52,11 @@ public class BattleshipTest {
 	public void testShootAt2() {
 		Ocean water = new Ocean();
 		Ship tanker = new Battleship();
-		tanker.placeShipAt(2, 4, false, water);
+		tanker.placeShipAt(2, 4, true, water);
 
 		assertEquals("Ship placed in incorrect row",2,tanker.getBowRow());
 		assertEquals("Ship placed in incorrect column",4,tanker.getBowColumn());
-		assertEquals("Ship not horizontal",false,tanker.isHorizontal());
+		assertEquals("Ship not horizontal",true,tanker.isHorizontal());
 		assertEquals("Ship too short!",4,tanker.getLength());
 		
 		assertEquals("Shot at bow",true,tanker.shootAt(2, 4));
@@ -120,6 +120,66 @@ public class BattleshipTest {
 		assertEquals("Place 6,4 horizontal",true,tanker.okToPlaceShipAt(6, 4, true, water));
 		
 		
+	}
+	
+	@Test
+	public void testIsSunk(){
+		Ocean water = new Ocean();
+		Ship tanker = new Battleship();	
+
+		tanker.placeShipAt(1, 6, true, water);
+		
+		tanker.shootAt(1, 6);
+		tanker.shootAt(2, 6);
+		tanker.shootAt(3, 6);
+		tanker.shootAt(4, 6);
+		
+		assertEquals("check Sunk",false,tanker.isSunk());
+	}
+	
+	@Test
+	public void toStringTest(){
+		Ocean water = new Ocean();
+		Ship tanker = new Battleship();	
+	
+		tanker.placeShipAt(1, 6, false, water);
+		assertEquals("toString no shot",".",tanker.toString());
+		
+		tanker.shootAt(2, 6);
+		assertEquals("toString 1 shot","S",tanker.toString());
+		
+		tanker.shootAt(1, 6);
+		tanker.shootAt(3, 6);
+		tanker.shootAt(4, 6);
+		assertEquals("toString 4 shot","x",tanker.toString());
+
+	}
+	
+	@Test
+	public void isElementHitTest(){
+		Ocean water = new Ocean();
+		Ship tanker = new Battleship();	
+	
+		tanker.placeShipAt(1, 6, false, water);
+		assertEquals("element 0 not hit",false,tanker.isElementHit(1, 6));
+		assertEquals("element 1 not hit",false,tanker.isElementHit(2, 6));
+		assertEquals("element 2 not hit",false,tanker.isElementHit(3, 6));
+		assertEquals("element 3 not hit",false,tanker.isElementHit(4, 6));
+		
+		tanker.shootAt(2, 6);
+		assertEquals("toString 1 shot","S",tanker.toString());
+		assertEquals("element 0 not hit",false,tanker.isElementHit(1, 6));
+		assertEquals("element 1 hit",true,tanker.isElementHit(2, 6));
+		assertEquals("element 2 not hit",false,tanker.isElementHit(3, 6));
+		assertEquals("element 3 not hit",false,tanker.isElementHit(4, 6));
+		
+		tanker.shootAt(1, 6);
+		tanker.shootAt(3, 6);
+		assertEquals("element 0 hit",true,tanker.isElementHit(1, 6));
+		assertEquals("element 1 hit",true,tanker.isElementHit(2, 6));
+		assertEquals("element 2 hit",true,tanker.isElementHit(3, 6));
+		assertEquals("element 3 not hit",false,tanker.isElementHit(4, 6));
+
 	}
 	
 

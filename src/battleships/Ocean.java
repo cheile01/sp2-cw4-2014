@@ -12,8 +12,16 @@ public class Ocean {
 	private int shotsFired;
 	private int hitCount;
 	private int shipsSunk;
-	private Battleship[] battleship = new Battleship[0]; //1 Battleship
-	//private EmptySea[] emptySea = new EmptySea[99]; //100 EmptySea
+
+	//game parameters:
+	private int battleships = 1;
+	private int cruisers = 2;
+	private int destroyers = 3;
+	private int submarines = 4;
+	
+	//Calculated game parameters
+	private int totalShips = battleships+cruisers+destroyers+submarines;
+	private Ship[] shipArray = new Ship[totalShips];
 	
 	{
 		shotsFired=0;
@@ -129,8 +137,6 @@ public class Ocean {
 				this.ships[row+i][column] = s;
 			}
 		}
-		
-		
 		
 	}
 	

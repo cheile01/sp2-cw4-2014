@@ -9,10 +9,6 @@ package battleships;
  *
  * @author christianheiler
  */
-/**
- * @author christianheiler
- *
- */
 public class Ship {
 	
 	/** The bow row. */
@@ -151,10 +147,7 @@ public class Ship {
 		if(minRow > 0){ minRow--; }
 		if(minColumn > 0){ minColumn--; }
 		
-
-		//TODO: remove: 
-		System.out.println("For "+row+","+column+" Min: "+minRow+","+minColumn+" Max: "+maxRow+","+maxColumn);
-		
+	
 		//loop through Ocean
 		for(int r = minRow;r<=maxRow;r++){
 			for(int c = minColumn;c<=maxColumn;c++){	
@@ -200,13 +193,15 @@ public class Ship {
 		for(int i=0; i <= this.getLength()-1; i++){
 			if(this.isHorizontal()){
 				//check row values
-				if(this.getBowRow()+i==row && this.getBowColumn() == column){
+				if(this.getBowRow()==row && this.getBowColumn()+i == column){
+
 					this.hit[i] = true;
 					return true;
 				}	
 			} else {
 				//check column values
-				if(this.getBowRow()==row && this.getBowColumn()+i == column){
+				if(this.getBowRow()+i==row && this.getBowColumn() == column){
+
 					this.hit[i] = true;
 					return true;
 				}
@@ -221,8 +216,13 @@ public class Ship {
 	 * @return true, if is sunk
 	 */
 	public boolean isSunk(){
-		//TODO return true if all (length) elements of ship array are TRUE
-		return false;
+		//return true if all (length) elements of ship array are TRUE
+		for(int i = 0; i < this.length; i++){
+			if(hit[i] == false){
+				return false;
+			}
+		}
+		return true;
 	}
 	
 	
@@ -235,5 +235,19 @@ public class Ship {
 	public boolean isShip(){
 		return true;
 	}
+	
+	
+	public boolean isElementHit(int row, int column){
+		int element = 0;
+		if(this.isHorizontal()){
+			element = column - this.getBowColumn();
+		} else {
+			element = row - this.getBowRow();
+		}//END else isHorizontal
+		
+		return this.hit[element];
+	}
+	
+	
 	
 }

@@ -30,7 +30,7 @@ public class EmptySea extends Ship {
 	 */
 	@Override
 	public String toString(){
-		//TODO return appropriate string element:
+		//return appropriate string element:
 		// "." not fired at
 		//  "-" fired on water
 		if(this.hit[this.getLength()-1] == true){

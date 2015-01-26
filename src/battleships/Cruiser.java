@@ -7,21 +7,22 @@ package battleships;
  * @author christianheiler
  *
  */
-public class Battleship extends Ship {
+public class Cruiser extends Ship {
 
 
-	public Battleship() {
-		this.length = 4;
+	public Cruiser() {
+		this.length = 3;
 		
 	}
 	
+
 	/**
 	 * Returns the ship type
 	 * @return Ship type
 	 */
 	@Override
 	public String getShipType(){
-		return "battleship";
+		return "cruiser";
 	}
 	
 	/**
