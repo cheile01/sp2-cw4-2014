@@ -142,10 +142,6 @@ public class Ocean {
 	
 	
 	public void placeAllShipsRandomly(){
-		int row = 0;
-		int column = 0;
-		boolean horizontal;
-		Random rand = new Random();
 		for(int b = 0; b < this.battleships; b++){
 			placeShipRandomly(new Battleship());
 		}
@@ -159,6 +155,7 @@ public class Ocean {
 			placeShipRandomly(new Submarine());
 		}
 	}
+	
 	
 	private void placeShipRandomly(Ship ship){
 		int row = 0;
