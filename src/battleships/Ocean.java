@@ -3,6 +3,7 @@
  */
 package battleships;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -22,8 +23,7 @@ public class Ocean {
 	private int submarines = 4;
 	
 	//Calculated game parameters
-	private int totalShips = battleships+cruisers+destroyers+submarines;
-	private Ship[] shipArray = new Ship[totalShips];
+	private ArrayList<Ship> shipArray = new ArrayList<Ship>();
 	
 	{
 		shotsFired=0;
@@ -106,7 +106,13 @@ public class Ocean {
 	 */
 	public boolean isGameOver() {
 		//TODO check if all ships are sunk.
-		return false;
+		for(Ship ship : this.shipArray){
+			//if one ship is not sunk, the game is not over
+			if(!ship.isSunk()){
+				return false;
+			}
+		}
+		return true;
 	}
 	
 	/**
@@ -137,6 +143,7 @@ public class Ocean {
 				this.ships[row+i][column] = s;
 			}
 		}
+		this.shipArray.add(s);
 		
 	}
 	
@@ -168,10 +175,13 @@ public class Ocean {
 			horizontal = rand.nextBoolean();
 			if(ship.okToPlaceShipAt(row, column, horizontal, this)){
 				ship.placeShipAt(row, column, horizontal, this);
+				
 				break;
 			}
 		}while(true);
 	}
 	
 
+
+	
 }

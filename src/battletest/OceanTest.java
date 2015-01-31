@@ -6,9 +6,11 @@ import org.junit.Test;
 
 import battleships.Battleship;
 import battleships.Cruiser;
+import battleships.Destroyer;
 import battleships.EmptySea;
 import battleships.Ocean;
 import battleships.Ship;
+import battleships.Submarine;
 
 public class OceanTest {
 
@@ -106,7 +108,94 @@ public class OceanTest {
 			System.out.println();
 		}
 		System.out.println();
-		
 	}
+	
+	
+	
+	@Test
+	public void gameOverTest1() {
+		Ocean water = new Ocean();
+		Ship block = new Battleship();
+		
+		block.placeShipAt(1, 6, false, water);
+		
+		assertEquals("check if ship is not sunk",false,block.isSunk());
+		assertEquals("Game should go on",false,water.isGameOver());
+		
+		//shoot at ship
+		
+		assertEquals("Shoot at 1,6",true,block.shootAt(1, 6));
+		assertEquals("Shoot at 2,6",true,block.shootAt(2, 6));
+		assertEquals("Shoot at 3,6",true,block.shootAt(3, 6));
+		
+		//ship is almost sunk, checking if status is still correct.
+		
+		assertEquals("check if ship is not sunk",false,block.isSunk());
+		assertEquals("Game should go on",false,water.isGameOver());
+		
+		
+		assertEquals("Shoot at 4,6",true,block.shootAt(4, 6));
+
+		//ship should be sunk now
+		assertEquals("check if ship is sunk",true,block.isSunk());
+		assertEquals("Game should be over",true,water.isGameOver());
+
+	}
+	
+	@Test
+	public void gameOverTest2() {
+		//Testing multiple ships
+		Ocean water = new Ocean();
+		Ship bs = new Battleship();
+		Ship c1 = new Cruiser();
+		Ship d1 = new Destroyer();
+		Ship s1 = new Submarine();
+		Ship s2 = new Submarine();
+		
+		bs.placeShipAt(1, 6, false, water);
+		c1.placeShipAt(0, 0, true, water);
+		d1.placeShipAt(2, 1, false, water);
+		s1.placeShipAt(7, 2, false, water);
+		s2.placeShipAt(8, 5, false, water);
+		
+		assertEquals("check if bs is not sunk",false,bs.isSunk());
+		assertEquals("check if c1 is not sunk",false,c1.isSunk());
+		assertEquals("check if d1 is not sunk",false,d1.isSunk());
+		assertEquals("check if s1 is not sunk",false,s1.isSunk());
+		assertEquals("check if s2 is not sunk",false,s2.isSunk());
+		assertEquals("Game should go on",false,water.isGameOver());
+		
+		//shoot at ship
+		
+		assertEquals("Shoot at 1,6",true,bs.shootAt(1, 6));
+		assertEquals("Shoot at 2,6",true,bs.shootAt(2, 6));
+		assertEquals("Shoot at 3,6",true,bs.shootAt(3, 6));
+		assertEquals("Shoot at 0,0",true,c1.shootAt(0, 0));
+		assertEquals("Shoot at 0,1",true,c1.shootAt(0, 1));
+		assertEquals("Shoot at 2,1",true,d1.shootAt(2, 1));
+		assertEquals("Shoot at 7,2",true,s1.shootAt(7, 2));
+		
+		//ship is almost sunk, checking if status is still correct.
+		
+		assertEquals("check if bs is not sunk",false,bs.isSunk());
+		assertEquals("check if c1 is not sunk",false,c1.isSunk());
+		assertEquals("check if d1 is not sunk",false,d1.isSunk());
+		assertEquals("check if s1 is sunk",true,s1.isSunk());
+		assertEquals("check if s2 is not sunk",false,s2.isSunk());
+		assertEquals("Game should go on",false,water.isGameOver());
+		
+		
+		assertEquals("Shoot at 4,6",true,bs.shootAt(4, 6));
+		assertEquals("Shoot at 0,2",true,c1.shootAt(0, 2));
+		assertEquals("Shoot at 3,1",true,d1.shootAt(3, 1));
+		assertEquals("Shoot at 8,5",true,s2.shootAt(8, 5));
+
+		//ship should be sunk now
+		assertEquals("check if ship is sunk",true,bs.isSunk());
+		assertEquals("Game should be over",true,water.isGameOver());
+
+	}
+	
+	
 
 }
