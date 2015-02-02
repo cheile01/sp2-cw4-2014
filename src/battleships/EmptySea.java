@@ -34,26 +34,19 @@ public class EmptySea extends Ship {
 		//return appropriate string element:
 		// "." not fired at
 		//  "-" fired on water
-		if(this.hit[this.getLength()-1] == true){
+		if(this.hit[0] == true){
 			return "-";
 		}
 		return ".";
 	}
 	
-	public boolean shootAt(int row, int column){
-		for(int i=0; i <= this.getLength()-1; i++){
-			if(this.isHorizontal()){
-				//check row values
-				if(this.getBowRow()+i==row && this.getBowColumn() == column){
-					this.hit[i] = true;
-				}	
-			} else {
-				//check column values
-				if(this.getBowRow()==row && this.getBowColumn()+i == column){
-					this.hit[i] = true;
-				}
-			}//END else isHorizontal
-		}//END For loop
+	
+	@Override
+	public boolean shootAt(int row, int column){		
+		if(this.getBowRow() == row && this.getBowColumn() == column){
+			this.hit[0] = true;
+		}
+		
 		return false;
 	}
 

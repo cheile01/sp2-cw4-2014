@@ -20,20 +20,6 @@ public class OceanTest {
 		
 	}
 
-	@Test
-	public void testGetHitCount() {
-		//fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetShipsSunk() {
-		//fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetShotsFired() {
-		//fail("Not yet implemented");
-	}
 
 	@Test
 	public void occupiedTest() {
@@ -45,7 +31,6 @@ public class OceanTest {
 		
 		assertEquals("Check 1,6",false,water.isOccupied(1, 6));		
 		assertEquals("Check 2,6",true,water.isOccupied(2, 6));		
-		
 	}
 	
 	@Test
@@ -195,6 +180,102 @@ public class OceanTest {
 		assertEquals("Game should be over",true,water.isGameOver());
 
 	}
+	
+	
+	@Test
+	public void shootAt1() {
+		Ocean water = new Ocean();
+		Ship block = new Battleship();
+		
+		block.placeShipAt(1, 6, false, water);
+		
+		assertEquals("Checking hits",0,water.getHitCount());
+		assertEquals("Checking shots",0,water.getShotsFired());
+		assertEquals("Should be 0 sunk ships",0,water.getShipsSunk());
+		
+		//shoot at ocean
+		
+		assertEquals("Shoot at 1,6",true,water.shootAt(1, 6));
+		assertEquals("Shoot at 2,6",true,water.shootAt(2, 6));
+		assertEquals("Shoot at 3,6",true,water.shootAt(3, 6));
+		
+		assertEquals("Checking shots",3,water.getShotsFired());
+		assertEquals("Checking hits",3,water.getHitCount());
+		
+		//shoot at water
+		
+		assertEquals("Shoot at 1,7",false,water.shootAt(1, 7));
+		assertEquals("Shoot at 2,5",false,water.shootAt(2, 5));
+		assertEquals("Shoot at 8,8",false,water.shootAt(8, 8));
+		
+		assertEquals("Checking shots",6,water.getShotsFired());
+		assertEquals("Checking hits",3,water.getHitCount());
+		
+		//shoot at same again
+		assertEquals("Shoot at 3,6",true,water.shootAt(3, 6));
+		assertEquals("Shoot at 1,7",false,water.shootAt(1, 7));
+		
+		assertEquals("Checking shots",8,water.getShotsFired());
+		assertEquals("Checking hits",4,water.getHitCount());
+		
+		//sink ship
+		assertEquals("Shoot at 4,6",true,water.shootAt(4, 6));
+
+		//ship should be sunk now
+		assertEquals("check if ship is sunk",true,block.isSunk());
+		assertEquals("Should be 1 sunk ship",1,water.getShipsSunk());
+
+		//add another ship and sink it:
+		Submarine sub = new Submarine();
+		sub.placeShipAt(2, 2, true, water);
+		water.shootAt(2, 2);
+		assertEquals("Should be 2 sunk ships",2,water.getShipsSunk());
+		
+		assertEquals("Game should be over",true,water.isGameOver());
+
+	}
+	
+	
+	@Test
+	public void oceanPrint() {
+		Ocean water = new Ocean();
+		System.out.println();
+		System.out.println("Ocean print test");
+		System.out.println();
+		
+		water.print();
+		
+	}
+	
+	@Test
+	public void oceanPrint2() {
+		Ocean water = new Ocean();
+		Ship bs = new Battleship();
+		Ship c1 = new Cruiser();
+		Ship d1 = new Destroyer();
+		Ship s1 = new Submarine();
+		Ship s2 = new Submarine();
+		
+		bs.placeShipAt(1, 6, false, water);
+		c1.placeShipAt(0, 0, true, water);
+		d1.placeShipAt(2, 1, false, water);
+		s1.placeShipAt(7, 2, false, water);
+		s2.placeShipAt(8, 5, false, water);
+		
+		water.shootAt(1, 6);
+		water.shootAt(2, 6);
+		water.shootAt(0, 0);
+		water.shootAt(0, 1);
+		water.shootAt(0, 2);
+		
+		System.out.println();
+		System.out.println("Ocean print test2");
+		System.out.println();
+		
+		water.print();
+		
+	}
+	
 	
 	
 

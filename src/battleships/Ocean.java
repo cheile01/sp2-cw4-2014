@@ -98,6 +98,26 @@ public class Ocean {
 	 */
 	public void print() {
 		//TODO loop to print some ocean
+		
+		//Print first line
+		System.out.println("  0 1 2 3 4 5 6 7 8 9");
+		for(int r=0;r<10;r++){
+			System.out.print(r+" ");
+			for(int c=0;c<10;c++){
+				Ship ship = this.ships[r][c];
+				String s = ship.toString();
+				if(s=="S"){
+					if(!ship.isElementHit(r, c)){
+						s = ".";
+					} 
+				} 
+				System.out.print(s + " ");
+				
+			}//END Columns for loop
+			System.out.println();
+		}//END Rows for loop
+		
+		
 	}
 	
 	/**
@@ -105,7 +125,7 @@ public class Ocean {
 	 * @return TRUE if the game is over
 	 */
 	public boolean isGameOver() {
-		//TODO check if all ships are sunk.
+		//check if all ships are sunk.
 		for(Ship ship : this.shipArray){
 			//if one ship is not sunk, the game is not over
 			if(!ship.isSunk()){
@@ -181,6 +201,20 @@ public class Ocean {
 		}while(true);
 	}
 	
+	
+	public boolean shootAt(int row, int column){
+		Ship ship = this.ships[row][column];
+		boolean temp = ship.shootAt(row, column);
+		
+		this.increaseShotsFired();
+		if(ship.isShip()){
+			this.increaseHitCount();
+			if(ship.isSunk()){
+				this.increaseShipsSunk();
+			}
+		}	
+		return temp;
+	}
 
 
 	

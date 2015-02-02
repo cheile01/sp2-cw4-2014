@@ -194,14 +194,12 @@ public class Ship {
 			if(this.isHorizontal()){
 				//check row values
 				if(this.getBowRow()==row && this.getBowColumn()+i == column){
-
 					this.hit[i] = true;
 					return true;
 				}	
 			} else {
 				//check column values
 				if(this.getBowRow()+i==row && this.getBowColumn() == column){
-
 					this.hit[i] = true;
 					return true;
 				}
