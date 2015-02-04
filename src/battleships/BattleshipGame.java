@@ -9,7 +9,8 @@ public class BattleshipGame {
 	}
 	
 	public void main(String args[]){
-		
+		int number = getInteger("gimme");
+		System.out.println(number);
 	}
 	
 	
