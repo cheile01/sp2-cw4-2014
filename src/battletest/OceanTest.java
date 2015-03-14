@@ -278,6 +278,21 @@ public class OceanTest {
 		
 	}
 	
+	@Test
+	public void ShipArrayTest() {
+		Ocean water = new Ocean();
+		Ship bs = new Battleship();
+		bs.placeShipAt(1, 6, false, water);
+		
+		water.getShipList();
+		
+		assertEquals("There should be 1 Ship",1,water.getShipList().size());
+		
+		
+		
+	}
+	
+	
 	
 	
 

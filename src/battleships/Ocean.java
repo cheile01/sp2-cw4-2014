@@ -137,8 +137,14 @@ public class Ocean {
 		return true;
 	}
 	
+	//TODO: Remove function
+	public ArrayList<Ship> getShipList(){
+		return this.shipArray;
+	}
+	
+	
 	/**
-	 * check if game is over
+	 * check if element is Occupied
 	 * @param row ocean row
 	 * @param column ocean column
 	 * @return TRUE if the field is occupied by anything but EmptySea
@@ -165,7 +171,11 @@ public class Ocean {
 				this.ships[row+i][column] = s;
 			}
 		}
-		this.shipArray.add(s);
+		//Only add the ship to the list if it is a real ship, not empty ocean
+		if(s.isShip()){
+			this.shipArray.add(s);
+		}
+		
 		
 	}
 	
@@ -197,7 +207,6 @@ public class Ocean {
 			horizontal = rand.nextBoolean();
 			if(ship.okToPlaceShipAt(row, column, horizontal, this)){
 				ship.placeShipAt(row, column, horizontal, this);
-				
 				break;
 			}
 		}while(true);
@@ -206,13 +215,14 @@ public class Ocean {
 	
 	public boolean shootAt(int row, int column){
 		Ship ship = this.ships[row][column];
+		boolean alreadySunk = ship.isSunk();
+				
 		boolean temp = ship.shootAt(row, column);
-	
 		
 		this.increaseShotsFired();
 		if(ship.isShip()){
 			this.increaseHitCount();
-			if(ship.isSunk()){
+			if(ship.isSunk() && !alreadySunk){
 				this.increaseShipsSunk();
 			}
 		} 
