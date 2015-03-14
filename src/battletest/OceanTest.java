@@ -268,6 +268,8 @@ public class OceanTest {
 		water.shootAt(0, 1);
 		water.shootAt(0, 2);
 		
+		water.shootAt(8, 1);
+		
 		System.out.println();
 		System.out.println("Ocean print test2");
 		System.out.println();

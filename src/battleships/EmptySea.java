@@ -22,7 +22,7 @@ public class EmptySea extends Ship {
 	@Override
 	public String getShipType(){
 		//TODO: Change to Empty Sea;
-		return ".";
+		return "Empty Sea";
 	}
 	
 	/**
@@ -50,10 +50,6 @@ public class EmptySea extends Ship {
 		return false;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		return super.equals(obj);
-	}
 	
 	/**
 	 * Checks if is ship.

@@ -38,7 +38,9 @@ public class Ocean {
 		//fill Ocean with emtptySea Objects
 		for(int r=0; r<=9;r++){
 			for(int c=0; c<=9; c++){
-				ships[r][c] = new EmptySea();
+				Ship temp = new EmptySea();
+				temp.placeShipAt(r, c, true, this);
+				ships[r][c] = temp;
 			}//END for c
 		}//END for r
 	}
@@ -205,6 +207,7 @@ public class Ocean {
 	public boolean shootAt(int row, int column){
 		Ship ship = this.ships[row][column];
 		boolean temp = ship.shootAt(row, column);
+	
 		
 		this.increaseShotsFired();
 		if(ship.isShip()){
@@ -212,7 +215,7 @@ public class Ocean {
 			if(ship.isSunk()){
 				this.increaseShipsSunk();
 			}
-		}	
+		} 
 		return temp;
 	}
 
