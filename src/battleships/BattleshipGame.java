@@ -6,14 +6,15 @@ public class BattleshipGame {
 	
 	
 	public static void main(String args[]){
-		Ocean ocean = new Ocean();
-		ocean.placeAllShipsRandomly();
 		Scanner in = new Scanner(System.in);
 		int row;
 		int column;
 		boolean again = false;
 		
 		do{
+		Ocean ocean = new Ocean();
+		ocean.placeAllShipsRandomly();
+
 			do{
 				System.out.println("");
 				
@@ -41,13 +42,12 @@ public class BattleshipGame {
 			
 		}while(again);
 		
-		
+		System.out.println("Thank you for playing");
 		
 		in.close();
 		
 		
 	}
-	
 	
 	
 	public static int getInteger(String message, Scanner in){
@@ -70,7 +70,7 @@ public class BattleshipGame {
 	
 	public static boolean getPlayAgain(String message, Scanner in){
 		System.out.print(message);
-		String temp = in.nextLine();
+		String temp = in.next();
 		if(temp.equalsIgnoreCase("y")){
 			return true;
 		}
