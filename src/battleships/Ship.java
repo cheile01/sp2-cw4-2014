@@ -3,7 +3,7 @@
  */
 package battleships;
 
-// TODO: Auto-generated Javadoc
+
 /**
  * The Class Ship.
  *

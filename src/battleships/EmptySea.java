@@ -21,7 +21,6 @@ public class EmptySea extends Ship {
 	 */
 	@Override
 	public String getShipType(){
-		//TODO: Change to Empty Sea;
 		return "Empty Sea";
 	}
 	

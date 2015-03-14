@@ -99,7 +99,7 @@ public class Ocean {
 	 * print ocean
 	 */
 	public void print() {
-		//TODO loop to print some ocean
+		//loop to print some ocean
 		
 		//Print first line
 		System.out.println("  0 1 2 3 4 5 6 7 8 9");
