@@ -2,9 +2,15 @@ package battleships;
 
 import java.util.Scanner;
 
+/**
+ * The Class BattleshipGame.
+ */
 public class BattleshipGame {
 	
 	
+	/**
+	 * The main method.
+	 */
 	public static void main(String args[]){
 		Scanner in = new Scanner(System.in);
 		int row;
@@ -44,12 +50,19 @@ public class BattleshipGame {
 		
 		System.out.println("Thank you for playing");
 		
-		in.close();
-		
-		
-	}
+		in.close();	
+	}//END Main
 	
 	
+	
+	
+	/**
+	 * Gets the integer.
+	 *
+	 * @param message the message
+	 * @param in the Scanner class
+	 * @return the integer between 0 and 9
+	 */
 	public static int getInteger(String message, Scanner in){
 		System.out.print(message+" ");
 		int temp = -8;
@@ -68,6 +81,13 @@ public class BattleshipGame {
 		return temp;
 	}
 	
+	/**
+	 * Gets boolean value for playing again.
+	 *
+	 * @param message the message to be displayed
+	 * @param in the scanner
+	 * @return play again value
+	 */
 	public static boolean getPlayAgain(String message, Scanner in){
 		System.out.print(message);
 		String temp = in.next();

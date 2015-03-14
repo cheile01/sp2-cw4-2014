@@ -163,7 +163,7 @@ public class Ship {
 	}
 	
 	/**
-	 * Place ship at.
+	 * Place ship at coordinates
 	 *
 	 * @param row the row
 	 * @param column the column
@@ -183,7 +183,7 @@ public class Ship {
 	}
 	
 	/**
-	 * Shoot at.
+	 * Shoot at coordinates
 	 *
 	 * @param row the row
 	 * @param column the column

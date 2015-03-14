@@ -1,28 +1,42 @@
-/**
- * 
- */
 package battleships;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * @author christianheiler
+ * The Class Ocean.
  *
+ * @author christianheiler
  */
 public class Ocean {
+	
+	/** The ships. */
 	private Ship[][] ships = new Ship[10][10];
+	
+	/** The shots fired. */
 	private int shotsFired;
+	
+	/** The hit count. */
 	private int hitCount;
+	
+	/** The ships sunk. */
 	private int shipsSunk;
 
 	//game parameters:
+	/** The battleships. */
 	private int battleships = 1;
+	
+	/** The cruisers. */
 	private int cruisers = 2;
+	
+	/** The destroyers. */
 	private int destroyers = 3;
+	
+	/** The submarines. */
 	private int submarines = 4;
 	
 	//Calculated game parameters
+	/** The ship array. */
 	private ArrayList<Ship> shipArray = new ArrayList<Ship>();
 	
 	{
@@ -32,7 +46,7 @@ public class Ocean {
 	}
 	
 	/**
-	 * 
+	 * Ocean constructor.
 	 */
 	public Ocean() {
 		//fill Ocean with emtptySea Objects
@@ -46,6 +60,8 @@ public class Ocean {
 	}
 
 	/**
+	 * Gets the hit count.
+	 *
 	 * @return the hitCount
 	 */
 	public int getHitCount() {
@@ -53,13 +69,15 @@ public class Ocean {
 	}
 
 	/**
-	 * increase hit count by 1
+	 * increase hit count by 1.
 	 */
 	private void increaseHitCount() {
 		this.hitCount++;
 	}
 	
 	/**
+	 * Gets the ships sunk.
+	 *
 	 * @return the number of ships sunk.
 	 */
 	public int getShipsSunk() {
@@ -67,13 +85,15 @@ public class Ocean {
 	}
 
 	/**
-	 * increase hit count by 1
+	 * increase hit count by 1.
 	 */
 	private void increaseShipsSunk() {
 		this.shipsSunk++;
 	}
 	
 	/**
+	 * Gets the shots fired.
+	 *
 	 * @return the number of shots fired.
 	 */
 	public int getShotsFired() {
@@ -81,14 +101,15 @@ public class Ocean {
 	}
 
 	/**
-	 * increase shots fired by 1
+	 * increase shots fired by 1.
 	 */
 	private void increaseShotsFired() {
 		this.shotsFired++;
 	}
 	
 	/**
-	 * return ship array TEST only!
+	 * return ship array TEST only!.
+	 *
 	 * @return Ships array
 	 */
 	public Ship[][] getShipArray() {
@@ -96,7 +117,7 @@ public class Ocean {
 	}
 	
 	/**
-	 * print ocean
+	 * print ocean.
 	 */
 	public void print() {
 		//loop to print some ocean
@@ -123,7 +144,8 @@ public class Ocean {
 	}
 	
 	/**
-	 * check if game is over
+	 * check if game is over.
+	 *
 	 * @return TRUE if the game is over
 	 */
 	public boolean isGameOver() {
@@ -138,13 +160,19 @@ public class Ocean {
 	}
 	
 	//TODO: Remove function
+	/**
+	 * Gets the ship list.
+	 *
+	 * @return the ship list
+	 */
 	public ArrayList<Ship> getShipList(){
 		return this.shipArray;
 	}
 	
 	
 	/**
-	 * check if element is Occupied
+	 * check if element is Occupied.
+	 *
 	 * @param row ocean row
 	 * @param column ocean column
 	 * @return TRUE if the field is occupied by anything but EmptySea
@@ -154,8 +182,9 @@ public class Ocean {
 	}	
 	
 	/**
-	 * add a ship to the ocean
-	 * @param ship - the ship to place
+	 * add a ship to the ocean.
+	 *
+	 * @param s the s
 	 * @return TRUE if the field is occupied by anything but EmptySea
 	 */
 	public void addShip(Ship s){
@@ -180,6 +209,9 @@ public class Ocean {
 	}
 	
 	
+	/**
+	 * Place all ships randomly.
+	 */
 	public void placeAllShipsRandomly(){
 		for(int b = 0; b < this.battleships; b++){
 			placeShipRandomly(new Battleship());
@@ -196,6 +228,11 @@ public class Ocean {
 	}
 	
 	
+	/**
+	 * Place one ship randomly.
+	 *
+	 * @param ship the ship
+	 */
 	private void placeShipRandomly(Ship ship){
 		int row = 0;
 		int column = 0;
@@ -213,6 +250,13 @@ public class Ocean {
 	}
 	
 	
+	/**
+	 * Shoot at.
+	 *
+	 * @param row the row
+	 * @param column the column
+	 * @return true, if successful
+	 */
 	public boolean shootAt(int row, int column){
 		Ship ship = this.ships[row][column];
 		boolean alreadySunk = ship.isSunk();

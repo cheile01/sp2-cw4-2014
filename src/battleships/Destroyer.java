@@ -27,7 +27,7 @@ public class Destroyer extends Ship {
 	
 	/**
 	 * Returns single character for ship 
-	 * @return character to display
+	 * @return character to "S" Fired upon, "x" Sunk, "." not hit
 	 */
 	@Override
 	public String toString(){

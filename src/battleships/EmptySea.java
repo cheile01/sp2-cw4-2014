@@ -26,7 +26,7 @@ public class EmptySea extends Ship {
 	
 	/**
 	 * Returns single character for ship 
-	 * @return character to display
+	 * @return character to character to "-" water, "." not hit
 	 */
 	@Override
 	public String toString(){
